@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Daily Tasks Organiser</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="splash-screen">
+        <h1 class="splash-title">Your Daily Tasks Organiser</h1>
+    </div>
+    <div class="main-content">
+        <h1>Add your Today's tasks</h1>
+        
+        <div class="cards-container">
+            <!-- Combined Task Card -->
+            <div class="combined-card">
+                <div class="card-header">
+                    <h2>Your Tasks</h2>
+                </div>
+                
+                <div class="time-input-container">
+                    <input type="time" id="time-input" class="time-input" title="Enter start time (end time will be 30 minutes later)">
+                    <button id="add-time-btn" class="add-time-btn"><i class="add-icon">+</i></button>
+                </div>
+                <div style="font-size: 0.8rem; color: #6a11cb; margin-bottom: 10px; text-align: center;">Enter start time (end time will be 30 minutes later)</div>
+                
+                <div class="time-slots-container">
+                    <div class="time-slots-list" id="time-slots-list">
+                        <!-- Time slots will be added here dynamically -->
+                    </div>
+                </div>
+                
+                <div class="todo-header">
+                    <div class="input-container">
+                        <input type="text" id="task-input" placeholder="What do you need to do today?">
+                        <select id="time-slot-select" style="display: none;">
+                            <!-- Time slot options will be added here dynamically -->
+                        </select>
+                        <button id="add-task-btn"><i class="add-icon">+</i></button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+                
+                <div class="todo-list" id="todo-list">
+                    <!-- Task items will be added here dynamically -->
+                </div>
+                
+                <div class="todo-footer">
+                    <p><span id="tasks-counter">0</span> tasks left</p>
+                    <button id="clear-completed">Clear Completed</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Task Result Card (appears when a task is added with a time slot) -->
+        <div class="task-result-card" id="task-result-card">
+            <div class="task-result-header">
+                <h2 class="task-result-title">Scheduled Tasks</h2>
+            </div>
+            <div id="scheduled-tasks-list">
+                <!-- Scheduled tasks will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
