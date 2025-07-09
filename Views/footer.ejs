@@ -1,0 +1,38 @@
+<footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-check-circle"></i>
+                <span>Task Master</span>
+            </div>
+            <div class="footer-links">
+                <a href="/" class="footer-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/about" class="footer-link"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Vaibhav Jamloki. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Add animation to tasks when checked
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const item = this.closest('.item');
+                    if (this.checked) {
+                        item.style.opacity = '0.6';
+                        item.style.transition = 'opacity 0.3s ease';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

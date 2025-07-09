@@ -1,0 +1,60 @@
+<%- include("header") -%>
+
+  <div class="container">
+    <div class="box" id="heading">
+      <h1><i class="fas fa-clipboard-list"></i> <%= listTitle %></h1>
+    </div>
+
+    <div class="box">
+      <div class="task-list">
+        <% if(newListItems.length === 0) { %>
+          <div class="empty-state">
+            <i class="fas fa-tasks empty-icon"></i>
+            <p>No tasks yet! Add your first task below.</p>
+          </div>
+        <% } else { %>
+          <% newListItems.forEach(function(item){ %>
+            <form action="/delete" method="post" class="task-form">
+              <div class="item">
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="task-<%=item.id%>" name="checkbox" value="<%=item.id%>" onChange="this.form.submit()">
+                  <label for="task-<%=item.id%>" class="checkbox-label"></label>
+                </div>
+                <div class="task-info"><p class="task-text"><%=item.tasks%></p><span class="task-time"><%=item.time || '' %></span></div>
+                <button type="submit" class="delete-btn" aria-label="Delete task">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+              <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+            </form>
+          <% }) %>
+        <% } %>
+      </div>
+
+      <div class="add-task-section">
+        <form class="item add-form" action="/" method="post">
+          <div class="input-group">
+            <i class="fas fa-plus-circle input-icon"></i>
+            <input type="text" name="newItem" placeholder="Add a new task..." autocomplete="off" required>
+            <input type="time" name="newTime" class="time-input" required>
+          </div>
+          <button type="submit" name="list" value="<%= listTitle %>" class="add-btn">
+            <i class="fas fa-plus"></i> Add Task
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="create-list-box">
+      <h2><i class="fas fa-folder-plus"></i> Create New List</h2>
+      <form action="/create-list" method="get" class="create-list-form">
+        <input type="text" name="listName" placeholder="Enter list name..." required>
+        <button type="submit" class="create-list-btn">
+          <i class="fas fa-plus"></i> Create
+        </button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <%- include("footer") -%>
